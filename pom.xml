@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.joelson.turf</groupId>
+  <artifactId>swing-application</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.joelson.turf</groupId>
+      <artifactId>resources</artifactId>
+      <version>${org.joelson.turf.resources.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${org.junit.jupiter.junit-jupiter-api.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <org.joelson.turf.resources.version>1.8.0</org.joelson.turf.resources.version>
+    <org.junit.jupiter.junit-jupiter-api.version>5.10.2</org.junit.jupiter.junit-jupiter-api.version>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.7.0</version>
+        <configuration>
+          <encoding>UTF-8</encoding>
+          <release>21</release>
+          <showWarnings>true</showWarnings>
+          <showDeprecation>true</showDeprecation>
+          <failOnWarning>true</failOnWarning>
+          <failOnError>true</failOnError>
+          <compilerArgs>
+            <arg>-Xlint:all</arg>
+            <arg>-Xlint:-processing</arg>
+          </compilerArgs>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>org.joelson.turf.application.Application</mainClass>
+            </manifest>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <name>turfgame-swing-application</name>
+
+</project>
